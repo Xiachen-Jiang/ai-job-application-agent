@@ -1,0 +1,19 @@
+{
+  "name": "@job-agent/resume-agent",
+  "version": "0.0.1",
+  "private": true,
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "scripts": {
+    "build": "tsc"
+  },
+  "dependencies": {
+    "@job-agent/shared": "workspace:*",
+    "openai": "^4.77.0",
+    "zod": "3.24.1"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.2",
+    "typescript": "^5.7.2"
+  }
+}

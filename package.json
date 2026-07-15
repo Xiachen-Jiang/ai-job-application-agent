@@ -1,0 +1,23 @@
+{
+  "name": "search-job-agent",
+  "private": true,
+  "scripts": {
+    "build:packages": "pnpm db:generate && turbo build --filter=@job-agent/shared --filter=@job-agent/db --filter=@job-agent/*-agent",
+    "dev": "pnpm build:packages && turbo dev",
+    "build": "turbo build",
+    "lint": "turbo lint",
+    "db:generate": "dotenv -e .env -- pnpm --filter @job-agent/db generate",
+    "db:migrate": "dotenv -e .env -- pnpm --filter @job-agent/db migrate",
+    "db:push": "dotenv -e .env -- pnpm --filter @job-agent/db push",
+    "db:seed": "dotenv -e .env -- pnpm --filter @job-agent/db seed"
+  },
+  "devDependencies": {
+    "dotenv-cli": "^7.4.4",
+    "turbo": "^2.3.3",
+    "typescript": "^5.7.2"
+  },
+  "packageManager": "pnpm@9.15.0",
+  "engines": {
+    "node": ">=20"
+  }
+}

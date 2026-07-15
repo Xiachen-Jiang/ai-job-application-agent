@@ -1,0 +1,185 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum WorkType {
+  REMOTE
+  HYBRID
+  ONSITE
+  UNKNOWN
+}
+
+enum ApplicationStatus {
+  SAVED
+  APPLIED
+  INTERVIEW
+  REJECTED
+  OFFER
+}
+
+enum AgentRunStatus {
+  PENDING
+  RUNNING
+  COMPLETED
+  FAILED
+}
+
+enum JobSource {
+  APS_JOBS
+  SEEK
+  MANUAL
+}
+
+model UserProfile {
+  id                       String   @id @default(cuid())
+  email                    String   @unique
+  targetRoles              String[] @default([])
+  targetLocations          String[] @default([])
+  minSalaryAud             Int?
+  visaSponsorshipRequired  Boolean  @default(false)
+  preferredWorkType        WorkType @default(UNKNOWN)
+  skills                   String[] @default([])
+  createdAt                DateTime @default(now())
+  updatedAt                DateTime @updatedAt
+}
+
+model MasterResume {
+  id          String   @id @default(cuid())
+  label       String   @unique
+  displayName String
+  version     Int      @default(1)
+  content     Json
+  docxPath    String?
+  isActive    Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  tailoredResumes TailoredResume[]
+}
+
+model Job {
+  id           String     @id @default(cuid())
+  source       JobSource
+  externalId   String?
+  title        String
+  company      String
+  salaryRaw    String?
+  location     String?
+  workType     WorkType   @default(UNKNOWN)
+  description  String     @db.Text
+  applyUrl     String?
+  rawPayload   Json?
+  createdAt    DateTime   @default(now())
+  updatedAt    DateTime   @updatedAt
+
+  analysis      JobAnalysis?
+  matchScore    JobMatchScore?
+  tailoredResumes TailoredResume[]
+  coverLetters  CoverLetter[]
+  applications  Application[]
+
+  @@unique([source, externalId])
+  @@index([company, title])
+}
+
+model JobAnalysis {
+  id              String   @id @default(cuid())
+  jobId           String   @unique
+  job             Job      @relation(fields: [jobId], references: [id], onDelete: Cascade)
+  requiredSkills  String[] @default([])
+  preferredSkills String[] @default([])
+  seniority       String?
+  industry        String?
+  summary         String?  @db.Text
+  llmMatchScore   Int?
+  hiddenSignals   Json?
+  descriptionHash String?
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+}
+
+model JobMatchScore {
+  id           String   @id @default(cuid())
+  jobId        String   @unique
+  job          Job      @relation(fields: [jobId], references: [id], onDelete: Cascade)
+  skillScore   Float
+  salaryScore  Float
+  locationScore Float
+  visaScore    Float
+  totalScore   Float
+  breakdown    Json?
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+}
+
+model TailoredResume {
+  id                 String       @id @default(cuid())
+  jobId              String
+  job                Job          @relation(fields: [jobId], references: [id], onDelete: Cascade)
+  masterResumeId     String
+  masterResume       MasterResume @relation(fields: [masterResumeId], references: [id])
+  version            Int          @default(1)
+  content            Json
+  docxPath           String?
+  pdfPath            String?
+  createdAt          DateTime     @default(now())
+
+  applications Application[]
+
+  @@index([jobId])
+}
+
+model CoverLetter {
+  id        String   @id @default(cuid())
+  jobId     String
+  job       Job      @relation(fields: [jobId], references: [id], onDelete: Cascade)
+  version   Int      @default(1)
+  content   String   @db.Text
+  docxPath  String?
+  pdfPath   String?
+  createdAt DateTime @default(now())
+
+  applications Application[]
+
+  @@index([jobId])
+}
+
+model Application {
+  id              String            @id @default(cuid())
+  jobId           String?
+  job             Job?              @relation(fields: [jobId], references: [id], onDelete: SetNull)
+  company         String
+  role            String
+  status          ApplicationStatus @default(SAVED)
+  appliedDate     DateTime?
+  followUpDate    DateTime?
+  resumeVersionId String?
+  resumeVersion   TailoredResume?   @relation(fields: [resumeVersionId], references: [id])
+  coverLetterId   String?
+  coverLetter     CoverLetter?      @relation(fields: [coverLetterId], references: [id])
+  notes           String?           @db.Text
+  createdAt       DateTime          @default(now())
+  updatedAt       DateTime          @updatedAt
+
+  @@index([status])
+  @@index([company, role])
+}
+
+model AgentRun {
+  id         String         @id @default(cuid())
+  agentName  String
+  status     AgentRunStatus @default(PENDING)
+  inputRef   String?
+  outputRef  String?
+  error      String?        @db.Text
+  durationMs Int?
+  createdAt  DateTime       @default(now())
+  updatedAt  DateTime       @updatedAt
+
+  @@index([agentName, status])
+}
