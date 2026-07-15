@@ -1,0 +1,73 @@
+{
+  "personal_info": {
+    "name": "Example Candidate",
+    "email": "example@example.com",
+    "phone": "0400 000 000",
+    "location": "Adelaide, Australia",
+    "linkedin": "example-linkedin",
+    "portfolio": "https://example.com",
+    "summary": "Full Stack Software Engineer with commercial experience designing, developing, testing and maintaining enterprise web applications using Angular, TypeScript, C#, ASP.NET Core and SQL Server. Experienced across the full SDLC including requirements analysis, solution design, API integration, database optimisation, testing, deployment and production support within Agile delivery environments."
+  },
+  "skills": [
+    "C#",
+    "ASP.NET Core",
+    ".NET Core",
+    "TypeScript",
+    "JavaScript",
+    "Angular",
+    "React",
+    "SQL Server",
+    "PostgreSQL",
+    "MySQL",
+    "REST APIs",
+    "Azure DevOps",
+    "Git",
+    "CI/CD",
+    "Agile SDLC",
+    "NUnit",
+    "Jest",
+    "HTML5",
+    "CSS3"
+  ],
+  "experiences": [
+    {
+      "company": "Example Software Company",
+      "title": "Software Developer",
+      "location": "Adelaide, Australia",
+      "start_date": "2024-09",
+      "end_date": "Present",
+      "bullets": [
+        "Developed and enhanced enterprise web applications using Angular, TypeScript, ASP.NET Core and SQL Server across the full application stack.",
+        "Designed and implemented user-facing functionality, ensuring applications were robust, scalable, maintainable and aligned with business requirements.",
+        "Developed RESTful APIs and backend services in C# and ASP.NET Core to support secure and reliable system integrations.",
+        "Designed and optimised SQL Server database structures, queries and stored procedures, improving application performance and reducing response times.",
+        "Automated build, deployment and release processes using Azure DevOps, Git and CI/CD pipelines."
+      ]
+    },
+    {
+      "company": "Example Consulting Company",
+      "title": "Software Developer",
+      "location": "Adelaide, Australia",
+      "start_date": "2024-04",
+      "end_date": "2024-06",
+      "bullets": [
+        "Developed frontend components using React, Angular and TypeScript alongside ASP.NET Core backend services.",
+        "Built and maintained REST APIs supporting authentication, business workflows and data integration requirements.",
+        "Participated in Agile sprint planning, implementation, testing, debugging and production support throughout the software development lifecycle."
+      ]
+    }
+  ],
+  "projects": [],
+  "education": [
+    {
+      "institution": "Example University",
+      "degree": "Master of Information Technology",
+      "graduation_date": "2023-07"
+    },
+    {
+      "institution": "Example University",
+      "degree": "Bachelor of Computer Science",
+      "graduation_date": ""
+    }
+  ]
+}

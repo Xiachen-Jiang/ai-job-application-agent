@@ -8,4 +8,7 @@ storage/
 *.log
 .DS_Store
 .pnpm-store/
-.pnpm-store/
+
+# Personal resume seed data
+packages/db/data/resumes/ai.json
+packages/db/data/resumes/software.json

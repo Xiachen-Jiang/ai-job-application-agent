@@ -1,0 +1,86 @@
+{
+  "personal_info": {
+    "name": "Example Candidate",
+    "email": "example@example.com",
+    "phone": "0400 000 000",
+    "location": "Adelaide, Australia",
+    "linkedin": "example-linkedin",
+    "portfolio": "https://example.com",
+    "summary": "Software Engineer with commercial experience developing enterprise web applications, APIs and data-driven solutions using C#, ASP.NET Core, TypeScript, React and SQL. Recently expanded expertise into Generative AI and agent-based applications, including intelligent support agents, tool-calling workflows and AI automation. Seeking opportunities as an AI Engineer, Agent Engineer or AI Application Developer."
+  },
+  "skills": [
+    "C#",
+    "TypeScript",
+    "JavaScript",
+    "Python",
+    "Angular",
+    "React",
+    "ASP.NET Core",
+    "REST APIs",
+    "LangChain",
+    "LangGraph",
+    "OpenAI API",
+    "Prompt Engineering",
+    "AI Agents",
+    "Tool Calling",
+    "Agent Orchestration",
+    "SQL Server",
+    "PostgreSQL",
+    "Azure DevOps",
+    "Git",
+    "CI/CD",
+    "Agile SDLC"
+  ],
+  "experiences": [
+    {
+      "company": "Example Software Company",
+      "title": "Software Developer",
+      "location": "Adelaide, Australia",
+      "start_date": "2024-09",
+      "end_date": "Present",
+      "bullets": [
+        "Developed and enhanced enterprise web applications using Angular, TypeScript, ASP.NET Core and SQL Server across the full application stack.",
+        "Designed and implemented RESTful APIs and backend services to support secure and reliable system integrations.",
+        "Optimised SQL Server database structures, queries and stored procedures, improving application performance and production stability.",
+        "Collaborated with stakeholders and development teams to analyse requirements and deliver fit-for-purpose software solutions.",
+        "Explored AI-assisted development workflows, prompt engineering and agent-based automation to streamline repetitive engineering tasks."
+      ]
+    },
+    {
+      "company": "Example Consulting Company",
+      "title": "Software Developer",
+      "location": "Adelaide, Australia",
+      "start_date": "2024-04",
+      "end_date": "2024-06",
+      "bullets": [
+        "Developed React and Angular frontend components alongside ASP.NET Core backend services within an Agile delivery environment.",
+        "Built and maintained REST APIs supporting authentication, business workflows and data integration requirements.",
+        "Assisted with database design, SQL optimisation and defect resolution to improve software reliability and maintainability."
+      ]
+    }
+  ],
+  "projects": [
+    {
+      "name": "AI Support Agent",
+      "description": "Example personal project — AI agent system with autonomous reasoning and tool calling",
+      "technologies": ["TypeScript", "LangChain", "LangGraph", "OpenAI API", "Prompt Engineering"],
+      "bullets": [
+        "Built an AI agent system capable of autonomous reasoning, tool calling and workflow execution using modern agent patterns.",
+        "Developed agent-based workflows for documentation retrieval, support automation and task management through dynamic tool orchestration.",
+        "Designed reusable tool interfaces and validation layers using TypeScript and schema-based input validation."
+      ]
+    }
+  ],
+  "education": [
+    {
+      "institution": "Example University",
+      "degree": "Master of Information Technology",
+      "graduation_date": "2023-07"
+    },
+    {
+      "institution": "Example University",
+      "degree": "Bachelor of Computer Science",
+      "graduation_date": ""
+    }
+  ]
+}
